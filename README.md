@@ -30,16 +30,22 @@ This project demonstrates basic cybersecurity analysis techniques by examining L
 ## Example Commands
 
 ```bash
-# View failed SSH login attempts
-grep "Failed password" /var/log/auth.log
+   # View failed SSH login attempts
+   grep "Failed password" /var/log/auth.log
+   # Count failed attempts by IP
+   grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr
+   # Find successful root logins
+   grep "Accepted password for root" /var/log/auth.log
+   # Detect brute-force attempts (IPs with more than 5 failures)
+  grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | awk '$1 > 5'
+````
 
-# Count failed attempts by IP
-grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr
 
-# Find successful root logins
-grep "Accepted password for root" /var/log/auth.log
-
-# Detect brute-force attempts (IPs with more than 5 failures)
-grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | awk '$1 > 5'
-
+## 📚 Author
+![AWS](https://img.shields.io/badge/Built%20with-AWS-orange?style=flat&logo=amazonaws) by Junior Kalomba
+**🔗 Feel free to contribute or suggest improvements!** 
+<p align="right">
+  <a href="https://www.linkedin.com/in/junior-kalomba-10002a18a/" target="_blank">
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="junior-kalomba-10002a18a" height="30" width="40"/>  
+   
 
