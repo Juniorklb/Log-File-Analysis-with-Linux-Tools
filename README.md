@@ -42,7 +42,7 @@ This project demonstrates basic cybersecurity analysis techniques by examining L
 
 
 ## 📚 Author
-![AWS](https://img.shields.io/badge/Built%20with-AWS-orange?style=flat&logo=amazonaws) by Junior Kalomba
+![AWS](https://img.shields.io/badge/Built%20by-juniorkalomba-orange?style=flat&logo=amazonaws) 
 **🔗 Feel free to contribute or suggest improvements!** 
 <p align="right">
   <a href="https://www.linkedin.com/in/junior-kalomba-10002a18a/" target="_blank">
