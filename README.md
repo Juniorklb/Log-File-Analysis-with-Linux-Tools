@@ -137,9 +137,17 @@ This the output
 ### Step 3: Find Successful Root Logins.
 
 1. Search for Successful Logins
-``grep "Accepted password for root" sample_auth.log``
-
-2. 
+   
+````bash
+grep "Accepted password for root" sample_auth.log
+````
+2. Count How Many Times Root Logged In
+   
+   ````bash
+   grep "Accepted password for root" sample_auth.log | wc -l
+   ````
+- This gives the total number of successful root logins.
+  
 ## 📚 Author
 ![AWS](https://img.shields.io/badge/Built%20by-juniorkalomba-orange?style=flat&logo=amazonaws) 
 **🔗 Feel free to contribute or suggest improvements!** 
