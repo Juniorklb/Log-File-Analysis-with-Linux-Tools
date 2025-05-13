@@ -1,4 +1,5 @@
 # 🔍 Log File Analysis with Linux Tools
+![AWS](https://img.shields.io/badge/Built%20by-juniorkalomba-orange?style=flat&logo=amazonaws) 
 
 This project demonstrates basic cybersecurity analysis techniques by examining Linux system authentication logs using powerful command-line tools. The goal is to identify suspicious login behavior, failed SSH login attempts, and potential brute-force attacks.
 
