@@ -49,6 +49,97 @@ This project demonstrates basic cybersecurity analysis techniques by examining L
    - ``sudo`` usage
    - User login attempts (successful and failed)
    - PAM (Pluggable Authentication Module) events
+ 
+#### Command to Open the Log File (Read-Only)
+
+``sudo less /var/log/auth.log``
+**Navigation Tips in** ``less``:
+
+  - ``Arrow keys`` or ``j/k`` – Scroll line by line
+
+  - ``Space`` – Scroll down a page
+
+  - ``/keyword`` – Search for a keyword (e.g. ``/sshd``)
+
+  - ``n`` – Repeat the search forward
+
+  - ``q`` – Quit
+
+**Search for Key Events:**
+````bash
+# Find all SSH login attempts
+sudo grep sshd /var/log/auth.log
+
+# Find all failed login attempts
+sudo grep "Failed password" /var/log/auth.log
+
+# Find successful logins
+sudo grep "Accepted password" /var/log/auth.log
+````
+
+#### Your Task for Step 1:
+- Use less to explore /var/log/auth.log
+
+- Try the grep commands above
+
+- Note down a few example lines that show:
+
+   - A failed login
+
+   - A successful login
+
+   - A suspicious or interesting event
+
+**Extract and analyze failed login attempts to:**
+
+  - See how many times users failed to log in.
+
+  - Identify which IP addresses are trying (and failing) the most.
+
+**File:**
+- Let use sample_auth.log from Step 1.
+
+**1. Basic Search – All Failed Attempts**
+````bash
+grep "Failed password" sample_auth.log
+````
+- This will show us all failed login entries.
+  
+**2. Extract the IP Addresses**
+
+````bash
+grep "Failed password" sample_auth.log | awk '{print $(NF-3)}'
+````
+
+- This prints just the IPs. For example, you might get:
+````bash
+192.168.1.23
+192.168.1.23
+192.168.1.23
+203.0.113.50
+203.0.113.50
+203.0.113.50
+198.51.100.33
+198.51.100.33
+198.51.100.33
+````
+**3. Count and Sort by Frequency**
+````bash
+grep "Failed password" sample_auth.log | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr
+````
+This the output
+````bash
+3 192.168.1.23
+3 203.0.113.50
+3 198.51.100.33
+````
+- Now we know which IPs are repeatedly trying (and failing) to log in. These might be attackers or brute-force bots.
+### Step 3: Find Successful Root Logins.
+
+1. Search for Successful Logins
+``grep "Accepted password for root" sample_auth.log``
+
+2. 
 ## 📚 Author
 ![AWS](https://img.shields.io/badge/Built%20by-juniorkalomba-orange?style=flat&logo=amazonaws) 
 **🔗 Feel free to contribute or suggest improvements!** 
