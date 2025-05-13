@@ -39,8 +39,16 @@ This project demonstrates basic cybersecurity analysis techniques by examining L
    # Detect brute-force attempts (IPs with more than 5 failures)
   grep "Failed password" /var/log/auth.log | awk '{print $(NF-3)}' | sort | uniq -c | awk '$1 > 5'
 ````
-
-
+## STEP 1: Explore the Linux Authentication Log
+**Log File:**
+- On most Linux systems, the main authentication log file is:
+   - **Debian/Ubuntu:** /var/log/auth.log
+   - **CentOS/RHEL/Fedora:** /var/log/secure
+- This log contains authentication events like:
+   - SSH logins
+   - ``sudo`` usage
+   - User login attempts (successful and failed)
+   - PAM (Pluggable Authentication Module) events
 ## 📚 Author
 ![AWS](https://img.shields.io/badge/Built%20by-juniorkalomba-orange?style=flat&logo=amazonaws) 
 **🔗 Feel free to contribute or suggest improvements!** 
